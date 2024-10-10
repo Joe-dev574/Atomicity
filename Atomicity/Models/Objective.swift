@@ -30,7 +30,7 @@ class Objective {
         dateStarted: Date = Date.distantPast,
         dateCompleted: Date = Date.distantPast,
         priority: Int? = nil,
-        status: Status = .active
+        status: Status = .Queue
     ) {
         self.title = title
         self.briefDescription = briefDescription
@@ -42,35 +42,30 @@ class Objective {
     }
     var icon: Image {
         switch Status(rawValue: status)! {
-        case .planning:
+        case .Queue:
             Image(systemName: "calendar.badge.clock")
-        case .active:
+        case .inProgress:
             Image(systemName: "hourglass.circle")
         case .completed:
             Image(systemName: "checkmark.seal")
-        case .hold:
-            Image(systemName: "exclamationmark.circle")
         }
     }
 }
-///TODO:  create custom icons for icon
+
+
 enum Status: Int, Codable, Identifiable, CaseIterable {
-    case planning,active, completed, hold
+    case Queue, inProgress, completed
     var id: Self {
         self
     }
-    var descr: String {
+    var descr: LocalizedStringResource {
         switch self {
-        case .planning:
-            "Plan"
-        case .active:
-            "Active"
+        case .Queue:
+            "Queue"
+        case .inProgress:
+            "In Progress"
         case .completed:
-            "Complete"
-        case .hold:
-            "Hold"
+            "Completed"
         }
     }
 }
-
-

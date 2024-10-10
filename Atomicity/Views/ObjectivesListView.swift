@@ -32,9 +32,9 @@ struct ObjectivesListView: View {
         ScrollView{
             ForEach(objectives) { objective in
                 NavigationLink{
-                    EditObjectiveScreen()
+                    EditObjectiveScreen(objective: objective)
                 } label: {
-                    ObjectiveCardView()
+                    ObjectiveCardView(objective: objective)
                 }
             }
             .onDelete(perform: deleteItems)

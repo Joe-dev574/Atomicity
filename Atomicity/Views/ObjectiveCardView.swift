@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ObjectiveCardView: View {
-   
+ let objective: Objective
     var body: some View {
         VStack(alignment: .leading) {
             ZStack {
@@ -20,7 +20,7 @@ struct ObjectiveCardView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 7)
                                     .fill(Color.blue)
-                                    .frame(height: 40)
+                                    .frame(height: 30)
                                 HStack {
                                     Text("⌛︎Active")
                                         .font(.title2)
@@ -44,24 +44,26 @@ struct ObjectiveCardView: View {
                                 .fontDesign(.serif)
                                 .fontWeight(.bold)
                                 .foregroundColor(.blue)
+                              
                             Spacer()
-                        }   .padding(.horizontal)
-                        Text("Calibrate All Miller Weld Equipment")
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 2)
+                        Text(objective.title)
                             .font(.title3)
                             .fontDesign(.serif)
                             .foregroundColor(.indigo)
                             .padding(.horizontal, 7)
                             .padding(.top, 1)
-                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip .")
-                            .font(.subheadline)
+                        Text(objective.briefDescription)
+                            .font(.caption)
                             .fontDesign(.serif)
                             .foregroundColor(.primary)
                             .padding(.horizontal, 7)
-                            .padding(.top, 10)
                             .padding(.bottom, 40)
                             .lineLimit(2)
                         HStack {
-                            Text("Due:")
+                            Text("Added:")
                                 .fontDesign(.serif)
                                 .font(.caption)
                                 .foregroundStyle(.gray)
@@ -70,7 +72,7 @@ struct ObjectiveCardView: View {
                                 .foregroundStyle(.gray)
                                 .padding(.trailing, -20)
                              
-                            Text("27 October 2024")
+                            Text("27 OCTOBER 2024")
                                 .fontDesign(.serif)
                                 .font(.caption)
                                 .foregroundStyle(.gray)
@@ -81,7 +83,7 @@ struct ObjectiveCardView: View {
                                     .fill(Color.primary)
                                     .frame(width: 57, height: 27)
                                 RoundedRectangle(cornerRadius: 7)
-                                    .fill(Color.red.opacity(0.9))
+                                    .fill(Color.red)
                                     .frame(width: 55, height: 25)
                                 Text("Ozark")
                                     .font(.caption)
@@ -97,7 +99,7 @@ struct ObjectiveCardView: View {
                 }
                 RoundedRectangle(cornerRadius: 7)
                     .fill(Color.gray.opacity(0.35))
-                    .frame(height: 240)
+                    .frame(height: 200)
                 
                 
             }
@@ -106,5 +108,5 @@ struct ObjectiveCardView: View {
 }
 
 #Preview {
-    ObjectiveCardView()
+    ObjectiveCardView(objective: Objective(title: "workout", briefDescription: "workout really hard"))
 }

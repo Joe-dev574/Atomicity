@@ -17,7 +17,7 @@ struct HeaderView: View {
                   
                     Image(systemName: "atom")
                         .resizable()
-                        .frame(width: 50, height: 50)
+                        .frame(width: 50, height: 45)
                         .foregroundColor(.blue).opacity(0.3)
                     HStack {
                         Text("Atom")
